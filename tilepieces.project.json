@@ -1,0 +1,10 @@
+{
+  "name": "PWA-API",
+  "components": {
+    "tilepieces": {
+      "name": "tilepieces",
+      "path": "/components/tilepieces"
+    }
+  },
+  "lastFileOpened": "/automated-test.html"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "tilepieces",
+  "description": "",
+  "version": "1.0.0",
+  "author": "",
+  "website": "",
+  "repository": "",
+  "html": "",
+  "addDependenciesToBundles": false,
+  "bundle": {
+    "stylesheet": {},
+    "stylesheetHeader": "",
+    "stylesheetFooter": "",
+    "scriptHeader": "",
+    "scriptFooter": "",
+    "script": {}
+  },
+  "sources": {
+    "stylesheets": [],
+    "scripts": []
+  },
+  "dependencies": [],
+  "components": {
+    "tilepieces/test-utils": {
+      "name": "tilepieces/test-utils",
+      "path": "/test-utils"
+    },
+    "tilepieces/test-storage-api": {
+      "name": "tilepieces/test-storage-api",
+      "path": "/test-storage-api"
+    }
+  },
+  "mergeMiscellaneous": false,
+  "miscellaneous": [],
+  "selector": "",
+  "interface": "",
+  "fixedHTML": false,
+  "parseHTML": ""
+}
