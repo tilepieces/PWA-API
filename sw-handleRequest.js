@@ -1,4 +1,7 @@
 async function handleRequest(request){
+  var matchParams = request.url.match(/\?|#/);
+  if(matchParams)
+    request = new Request(request.url.substring(0,matchParams.index));
   var ref = request.referrer.replace(resourcePath,"");
   var url = request.url.replace(resourcePath,"");
   if(ref.startsWith(CACHEPATH) || url.startsWith(CACHEPATH)){
@@ -10,9 +13,6 @@ async function handleRequest(request){
     }
     if(url == CACHEPATH )
       return new Response('');
-    var matchParams = url.match(/\?|#/);
-    if(matchParams)
-      request = new Request(url.substring(0,matchParams.index));
     var urlToProject = url.startsWith(CACHEPATH);
     if(!urlToProject){
       var project = ref.replace(CACHEPATH,"").split("/").shift();
@@ -47,10 +47,7 @@ async function handleRequest(request){
         return await cacheFiles.match(request);
       }
     }
-    var matchParams = newUrl.match(/\?|#/);
-    if(matchParams)
-      request = new Request(newUrl.substring(0,matchParams.index));
-    else if(newUrl.endsWith("/"))
+    if(newUrl.endsWith("/"))
       request = new Request(newUrl + "index.html"); // problem in cloning the request.
     else
       request = new Request(newUrl);
