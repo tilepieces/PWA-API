@@ -9,7 +9,7 @@ async function create(projectName){
   var pAlreadyPresentIndex = projectJson.findIndex(v=>v.name == projectName);
   if(pAlreadyPresentIndex>-1)
       projectJson.splice(pAlreadyPresentIndex,1);
-  projectJson.push(newEntry);
+  projectJson.unshift(newEntry);
   projectsBlob = new Blob([JSON.stringify(projectJson)], {type: 'application/json'});
   await cacheFiles.put("/projects.json", new Response(projectsBlob));
   var schema = await cacheFiles.match(new Request(projectPath));

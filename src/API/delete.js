@@ -8,7 +8,7 @@ async function del(path,project,component){
     var isdir = await isDir(path,component,component ? null : project);
     if (isdir) {
         var dirFiles = await getFiles(path,component,component ? null : project);
-        dirFiles.sort((a, b)=> { // sort from the deep level to the superficial one, to avoiding to delete the directory before its subfolders and files
+        dirFiles.sort((a, b)=> { // sort from the deep level to the superficial one, to avoid deleting the folder the directory before its subfolders and files
             return b.path.split("/").length - a.path.split("/").length;
         });
         for (var i = 0; i < dirFiles.length; i++)

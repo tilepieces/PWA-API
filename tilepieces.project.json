@@ -6,5 +6,9 @@
       "path": "/components/tilepieces"
     }
   },
-  "lastFileOpened": "/automated-test.html"
+  "lastFileOpened": "/automated-test.html",
+  "openedPanels": [
+    "package-manager",
+    "project-explorer"
+  ]
 }

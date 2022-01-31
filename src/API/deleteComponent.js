@@ -80,4 +80,5 @@ async function deleteComponent(newSettings) {
     await cache.put("/components.json",
         new Response(new Blob([JSON.stringify(newComponents)], {type: 'application/json'})));
   }
+  return {result: 1} // TODO
 }
