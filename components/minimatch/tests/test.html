@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Test minimatch import</title>
+  <meta charset="UTF-8">
+  <title>Test minimatch import</title>
 </head>
 <body>
 <script src="../minimatch.js"></script>
 <script>
-    var u = minimatch("bar.foo", "*.foo") // true!
-    var n = minimatch("lib/io/mondo.js", "lib/*.js") // false!
-    //var o = minimatch("bar.foo", "*.+(bar|foo)", { debug: true }) // true, and noisy!
-    var o = minimatch("bar.foo", "bar.*")
-    console.log(u,n,o)
-    var text = "<p>" + u + "</p><p>" + n + "</p><p>" + o + "</p>";
-    document.body.innerHTML = text;
+  var u = minimatch("bar.foo", "*.foo") // true!
+  var n = minimatch("lib/io/mondo.js", "lib/*.js") // false!
+  //var o = minimatch("bar.foo", "*.+(bar|foo)", { debug: true }) // true, and noisy!
+  var o = minimatch("bar.foo", "bar.*")
+  console.log(u, n, o)
+  var text = "<p>" + u + "</p><p>" + n + "</p><p>" + o + "</p>";
+  document.body.innerHTML = text;
 </script>
 </body>
 </html>

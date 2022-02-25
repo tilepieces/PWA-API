@@ -1,23 +1,28 @@
-.larger{
-    font-size:larger;
-    margin:5px 0;
-    border-bottom:1px solid #ccc
+.larger {
+  font-size: larger;
+  margin: 5px 0;
+  border-bottom: 1px solid #ccc
 }
-.large{
-    font-size:large;
-    margin:5px 0;
+
+.large {
+  font-size: large;
+  margin: 5px 0;
 }
-.success{
-    color:green;
+
+.success {
+  color: green;
 }
-.error{
-    color:red;
+
+.error {
+  color: red;
 }
-.success::before{
-    content:"\2713";
-    padding-right:10px;
+
+.success::before {
+  content: "\2713";
+  padding-right: 10px;
 }
-.error::before{
-    content:"\2715";
-    padding-right:10px;
+
+.error::before {
+  content: "\2715";
+  padding-right: 10px;
 }

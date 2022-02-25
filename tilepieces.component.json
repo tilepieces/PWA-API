@@ -28,9 +28,9 @@
     "PWA-API/minimatch"
   ],
   "components": {
-    "PWA-API/minimatch" : {
-      "path" : "/components/minimatch",
-      "name" : "PWA-API/minimatch"
+    "PWA-API/minimatch": {
+      "path": "/components/minimatch",
+      "name": "PWA-API/minimatch"
     }
   },
   "mergeMiscellaneous": true,
