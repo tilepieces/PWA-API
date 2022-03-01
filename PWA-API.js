@@ -14,6 +14,15 @@ async function copy(path, newPath, move = false) {
   await swStart();
   var splitPath = path.split("/");
   var resourceName = splitPath.pop();
+  if (await caches.match(CACHEPATH + tilepieces.currentProject + newPath)) {
+    var slicePath = newPath.split(".");
+    var number = slicePath[0].match(/\d+$/);
+    var newNumber = number ? +number[0]++ : 0;
+    newPath = slicePath[0] + newNumber + "." + slicePath[1];
+    while (await caches.match(CACHEPATH + tilepieces.currentProject + newPath)) {
+      newPath = slicePath[0] + newNumber++ + "." + slicePath[1];
+    }
+  }
   //newPath = newPath ? newPath + "/" + resourceName : resourceName;
   var isdir = await isDir(path);
   if (isdir) {
@@ -57,7 +66,7 @@ async function copy(path, newPath, move = false) {
       new Response(newParentDirectory));
   }
   return {
-    path: newPath,
+    newPath: newPath.slice(1),
     result: 1
   }
 }
