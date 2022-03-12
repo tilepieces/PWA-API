@@ -26,6 +26,6 @@ async function isDir(path, component, project) {
       + path + " , " + cacheToMatch + " , " + parentDirectory);
   }
   var json = await readParent.json();
-  if (typeof json[resourceName] === "object")
+  if (typeof json[decodeURI(resourceName)] === "object")
     return true;
 }

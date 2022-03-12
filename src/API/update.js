@@ -1,6 +1,6 @@
 async function update(path, blob, component) {
-  if (!tilepieces.currentProject)
-    throw "[update]Invalid call: no tilepieces.project setted";
+  if (!tilepieces.currentProject && !component)
+    throw "[update]Invalid call: no tilepieces.project setted and no component setted";
   await swStart();
   var parentDirectoryAsArray = path.split("/");
   var name = parentDirectoryAsArray.pop();
