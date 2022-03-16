@@ -7,14 +7,14 @@ async function createComponent(newSettings, files = []) {
   var projects = await readProjects();
   var settingsCacheFile = await fetch("/settings.json");
   var globalSettings = await settingsCacheFile.json();
-  console.log("enter ", newSettings, " creation. local -> " + newSettings.local)
+  // 'local' case
   if (newSettings.local) {
     // getting currentProject
     var project = projects.find(p => p.name == tilepieces.currentProject);
     if (!project.components)
       project.components = {};
     component.path = component.path ? slashDir(component.path) :
-      ("/" + (project.componentPath || globalSettings.componentPath) + "/" + component.name);
+      ("/" + (project.componentPath || globalSettings.componentPath) + "/" + component.name).replace(/\/+/g,"/");
     // save the component json
     var componentPathJSON = component.path + "/tilepieces.component.json";
     var currentJson;
@@ -31,7 +31,6 @@ async function createComponent(newSettings, files = []) {
     delete componentToSave.path;
     await update(componentPathJSON,
       new Blob([JSON.stringify(componentToSave, null, 2)]));
-    console.log("saving ->", componentPathJSON, componentToSave);
     // now save the 'upper' json: if subcomponent, we save the reference to the component in the parent component. Else, we save in the main project json
     var nameSplitted = component.name.split("/")
     var isSubComponent = nameSplitted.length > 1;
@@ -81,8 +80,8 @@ async function createComponent(newSettings, files = []) {
         JSON.stringify(project, null, 2));
       console.log("saving ->", "/tilepieces.project.json", project);
     }
-  } else {
-    // if path is not provided, maybe it is current Proj?
+  }
+  else { // 'global' case
     component.path = component.path ||
       projects.find(v => v.name == tilepieces.currentProject).path;
     component.components = components.components || components[component.name]?.components || {};
@@ -108,6 +107,7 @@ async function createComponent(newSettings, files = []) {
     await cacheFiles.put("/components.json",
       new Response(new Blob([JSON.stringify(newComponents, null, 2)], {type: 'application/json'})));
   }
+  // now save the files
   for (var i = 0; i < files.length; i++) {
     var fileData = files[i];
     var componentRootPath = slashDir(component.path);
@@ -118,7 +118,7 @@ async function createComponent(newSettings, files = []) {
     }
     var newPath = newSettings.local ?
       component.path + slashDir(fileData.path) :
-      fileData.path.replace(component.name, "");
+      fileData.path;
     await update(slashDir(newPath), fileData.blob, !newSettings.local ? component.name : null)
   }
   return {};

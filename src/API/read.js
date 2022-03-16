@@ -20,8 +20,8 @@ function read(path, component, project, raw = false) {
       var proxyPath = proxyToComp ?
         (componentPath.indexOf('http://') === 0 || componentPath.indexOf('https://') === 0) ?
           componentPath + path :
-          ("/" + componentPath + path).replace(/\/\//g, "/") :
-        CACHEPATH + (project + path).replace(/\/\//g, "/");
+          ("/" + componentPath + path).replace(/\/+/g, "/") :
+        CACHEPATH + (project + path).replace(/\/+/g, "/");
       var responseObj = await cache.match(new Request(proxyPath));
       if (responseObj) {
         if (raw)

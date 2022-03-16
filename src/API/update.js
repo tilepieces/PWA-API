@@ -54,7 +54,7 @@ async function update(path, blob, component) {
       slashDir(components[component].path);
   }
   var pathWhereToPut = component ? componentPath : CACHEPATH + tilepieces.currentProject;
-  await cache.put(pathWhereToPut + parentDirectory.replace(/\/\//g, "/"),
+  await cache.put(pathWhereToPut + parentDirectory.replace(/\/+/g, "/"),
     new Response(newParentDirectory));
   // add file
   var newPath = pathWhereToPut + path;

@@ -1,10 +1,10 @@
 {
   "name": "tilepieces",
-  "description": "",
-  "version": "1.0.0",
-  "author": "",
-  "website": "",
-  "repository": "",
+  "description": "tilepieces main project",
+  "version": "0.0.1",
+  "author": "Simone Di Nuovo",
+  "website": "https://tilepieces.net",
+  "repository": "https://github.com/tilepieces/tilepieces",
   "html": "",
   "addDependenciesToBundles": false,
   "bundle": {
@@ -22,12 +22,12 @@
   "dependencies": [],
   "components": {
     "tilepieces/test-utils": {
-      "name": "tilepieces/test-utils",
-      "path": "/test-utils"
+      "path": "/test-utils",
+      "name": "tilepieces/test-utils"
     },
     "tilepieces/test-storage-api": {
-      "name": "tilepieces/test-storage-api",
-      "path": "/test-storage-api"
+      "path": "/test-storage-api",
+      "name": "tilepieces/test-storage-api"
     }
   },
   "mergeMiscellaneous": false,
