@@ -22,9 +22,12 @@ async function create(projectName) {
   tilepieces.currentProject = projectName;
   var innerProjectConfPath = projectPath + "/tilepieces.project.json";
   var innerProjectConf = await cacheFiles.match(new Request(innerProjectConfPath));
+  var globalSettingsRaw = await fetch("/settings.json");
+  var globalSettings = await globalSettingsRaw.json();
+  var newProjectSettings = Object.assign({},globalSettings,{name: projectName, components: {}})
   if (!innerProjectConf)
     await update("tilepieces.project.json",
-      new Blob([JSON.stringify({name: projectName, components: {}}, null, 2)],
+      new Blob([JSON.stringify(newProjectSettings, null, 2)],
         {type: 'application/json'}));
   return {
     name: projectName,
