@@ -6,7 +6,7 @@ async function copy(path, newPath, move = false) {
     newPath[0] == "/" ? newPath : "/" + newPath :
     "";
   await swStart();
-  var splitPath = path.split("/");
+  var splitPath = path.split("/").filter(v=>v);
   var resourceName = splitPath.pop();
   if (await caches.match(CACHEPATH + tilepieces.currentProject + newPath)) {
     var slicePath = newPath.split(".");
